@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { ChartCard } from './ChartCard'
 import { KPICard } from './KPICard'
 import { CostByWorkerChart, HoursByActivityChart } from './HHCharts'
+import { calculateHHKPIs } from '@/dashboards/hh-dashboard/calculate'
+import { hhMockData } from '@/dashboards/hh-dashboard/mockData'
 
 type DashboardShellProps = {
   badge: string
@@ -14,6 +16,8 @@ export function DashboardShell({
   title,
   description,
 }: DashboardShellProps) {
+  const kpi = calculateHHKPIs(hhMockData)
+
   return (
     <main className='min-h-screen bg-slate-950 text-white'>
       <section className='mx-auto max-w-7xl px-6 py-10'>
@@ -51,22 +55,25 @@ export function DashboardShell({
         <section className='mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4'>
           <KPICard
             label='Total HH'
-            value='1,248'
+            value={String(kpi.totalHH)}
             helper='Total reported hours'
           />
+
           <KPICard
             label='Total Cost'
-            value='$18,420'
+            value={`$${kpi.totalCost}`}
             helper='Estimated labor cost'
           />
+
           <KPICard
             label='Productivity'
-            value='82%'
+            value={`${kpi.productivity}%`}
             helper='Based on completed work'
           />
+
           <KPICard
             label='Avg HH / Worker'
-            value='41.6'
+            value={kpi.avgHH.toFixed(1)}
             helper='Average per worker'
           />
         </section>
@@ -112,18 +119,17 @@ export function DashboardShell({
                 </tr>
               </thead>
               <tbody className='divide-y divide-white/10 bg-slate-950/40 text-slate-400'>
-                <tr>
-                  <td className='px-4 py-3'>Carlos</td>
-                  <td className='px-4 py-3'>Pump Install</td>
-                  <td className='px-4 py-3'>10</td>
-                  <td className='px-4 py-3'>$1200</td>
-                </tr>
-                <tr>
-                  <td className='px-4 py-3'>Maria</td>
-                  <td className='px-4 py-3'>Cable Install</td>
-                  <td className='px-4 py-3'>8</td>
-                  <td className='px-4 py-3'>$960</td>
-                </tr>
+                {hhMockData.map((row) => (
+                  <tr key={`${row.worker}-${row.activity}`}>
+                    <td className='px-4 py-3'>{row.worker}</td>
+
+                    <td className='px-4 py-3'>{row.activity}</td>
+
+                    <td className='px-4 py-3'>{row.hours}</td>
+
+                    <td className='px-4 py-3'>${row.cost}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
