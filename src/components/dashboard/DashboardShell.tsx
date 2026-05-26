@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ChartCard } from './ChartCard'
 import { KPICard } from './KPICard'
+import { CostByWorkerChart, HoursByActivityChart } from './HHCharts'
 
 type DashboardShellProps = {
   badge: string
@@ -74,12 +75,16 @@ export function DashboardShell({
           <ChartCard
             title='Hours by activity'
             description='Compare total man-hours across activities.'
-          />
+          >
+            <HoursByActivityChart />
+          </ChartCard>
 
           <ChartCard
             title='Cost by worker'
             description='Identify labor cost distribution by worker.'
-          />
+          >
+            <CostByWorkerChart />
+          </ChartCard>
         </section>
 
         <section className='mt-8 rounded-3xl border border-white/10 bg-white/4 p-6'>
