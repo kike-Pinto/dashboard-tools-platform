@@ -84,11 +84,15 @@ export function HoursByActivityChart({ data }: HHChartProps) {
         />
         <YAxis stroke='#94a3b8' fontSize={12} />
         <Tooltip
+          cursor={{ fill: 'rgba(34, 211, 238, 0.08)' }}
           contentStyle={{
             backgroundColor: '#020617',
-            border: '1px solid rgba(255,255,255,0.12)',
+            border: '1px solid rgba(34, 211, 238, 0.25)',
             borderRadius: '12px',
             color: '#fff',
+          }}
+          labelStyle={{
+            color: '#e2e8f0',
           }}
         />
         <Bar dataKey='hours' radius={[8, 8, 0, 0]} fill='#22d3ee' />
