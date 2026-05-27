@@ -18,7 +18,14 @@ type HHChartProps = {
   data: HHRow[]
 }
 
-const COLORS = ['#22d3ee', '#38bdf8', '#818cf8', '#a78bfa', '#f472b6']
+const COLORS = [
+  '#22d3ee',
+  '#a78bfa',
+  '#818cf8',
+  '#f472b6',
+  '#64748b',
+  '#38bdf8',
+]
 
 function groupHoursByActivity(data: HHRow[]) {
   const grouped = data.reduce<Record<string, number>>((acc, row) => {
@@ -38,10 +45,26 @@ function groupCostByWorker(data: HHRow[]) {
     return acc
   }, {})
 
-  return Object.entries(grouped).map(([worker, cost]) => ({
-    worker,
-    cost,
-  }))
+  const sorted = Object.entries(grouped)
+    .map(([worker, cost]) => ({
+      worker,
+      cost,
+    }))
+    .sort((a, b) => b.cost - a.cost)
+
+  const topWorkers = sorted.slice(0, 5)
+  const otherWorkers = sorted.slice(5)
+
+  const othersCost = otherWorkers.reduce((acc, item) => acc + item.cost, 0)
+
+  if (othersCost > 0) {
+    topWorkers.push({
+      worker: 'Others',
+      cost: othersCost,
+    })
+  }
+
+  return topWorkers
 }
 
 export function HoursByActivityChart({ data }: HHChartProps) {
