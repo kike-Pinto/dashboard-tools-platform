@@ -1,5 +1,6 @@
 'use client'
 
+import jsPDF from 'jspdf'
 import { toPng } from 'html-to-image'
 import { useState, useRef } from 'react'
 import { hhMockData } from '@/dashboards/hh-dashboard/mockData'
@@ -53,6 +54,28 @@ export function HHDashboardClient() {
     link.href = image
     link.download = 'hh-dashboard.png'
     link.click()
+  }
+
+  async function handleExportPDF() {
+    if (!dashboardRef.current) return
+
+    const image = await toPng(dashboardRef.current, {
+      cacheBust: true,
+      pixelRatio: 2,
+      backgroundColor: '#020617',
+    })
+
+    const pdf = new jsPDF({
+      orientation: 'landscape',
+      unit: 'px',
+      format: 'a4',
+    })
+
+    const pageWidth = pdf.internal.pageSize.getWidth()
+    const pageHeight = pdf.internal.pageSize.getHeight()
+
+    pdf.addImage(image, 'PNG', 0, 0, pageWidth, pageHeight)
+    pdf.save('hh-dashboard.pdf')
   }
 
   return (
@@ -177,12 +200,21 @@ export function HHDashboardClient() {
               </p>
             </div>
 
-            <button
-              onClick={handleExportPNG}
-              className='rounded-xl border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10'
-            >
-              Export PNG
-            </button>
+            <div className='flex flex-col gap-3 sm:flex-row'>
+              <button
+                onClick={handleExportPNG}
+                className='rounded-xl border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10'
+              >
+                Export PNG
+              </button>
+
+              <button
+                onClick={handleExportPDF}
+                className='rounded-xl bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300'
+              >
+                Export PDF
+              </button>
+            </div>
           </div>
 
           <div className='mt-6 overflow-hidden rounded-2xl border border-white/10'>
