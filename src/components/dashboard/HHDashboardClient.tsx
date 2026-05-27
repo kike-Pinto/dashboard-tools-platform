@@ -24,6 +24,8 @@ export function HHDashboardClient() {
   const [isExporting, setIsExporting] = useState(false)
 
   const kpi = calculateHHKPIs(data)
+  const visibleRows = data.slice(0, 10)
+  const hasMoreRows = data.length > visibleRows.length
 
   async function handleFileUpload(file: File) {
     const extension = file.name.split('.').pop()?.toLowerCase()
@@ -86,15 +88,25 @@ export function HHDashboardClient() {
       format: 'a4',
     })
 
-    pdf.addImage(
-      image,
-      'PNG',
-      0,
-      0,
-      pdf.internal.pageSize.getWidth(),
-      pdf.internal.pageSize.getHeight(),
-    )
+    const pageWidth = pdf.internal.pageSize.getWidth()
+    const pageHeight = pdf.internal.pageSize.getHeight()
 
+    const margin = 24
+
+    const imgProps = pdf.getImageProperties(image)
+    const imgWidth = pageWidth - margin * 2
+    const imgHeight = (imgProps.height * imgWidth) / imgProps.width
+
+    const finalHeight = Math.min(imgHeight, pageHeight - margin * 2)
+    const finalWidth =
+      finalHeight === imgHeight
+        ? imgWidth
+        : (imgProps.width * finalHeight) / imgProps.height
+
+    const x = (pageWidth - finalWidth) / 2
+    const y = margin
+
+    pdf.addImage(image, 'PNG', x, y, finalWidth, finalHeight)
     pdf.save('hh-dashboard.pdf')
   }
 
@@ -216,7 +228,7 @@ export function HHDashboardClient() {
             <div>
               <h2 className='text-xl font-semibold'>Data preview</h2>
               <p className='mt-2 text-sm text-slate-400'>
-                Review the parsed data before exporting the dashboard.
+                Showing {visibleRows.length} of {data.length} rows.
               </p>
             </div>
 
@@ -251,7 +263,7 @@ export function HHDashboardClient() {
               </thead>
 
               <tbody className='divide-y divide-white/10 bg-slate-950/40 text-slate-400'>
-                {data.map((row) => (
+                {visibleRows.map((row) => (
                   <tr key={`${row.worker}-${row.activity}-${row.hours}`}>
                     <td className='px-4 py-3'>{row.worker}</td>
                     <td className='px-4 py-3'>{row.activity}</td>
@@ -261,6 +273,12 @@ export function HHDashboardClient() {
                 ))}
               </tbody>
             </table>
+            {hasMoreRows && (
+              <div className='border-t border-white/10 bg-slate-950/60 px-4 py-3 text-sm text-slate-400'>
+                Only the first 10 rows are shown to keep the dashboard export
+                clean.
+              </div>
+            )}
           </div>
         </section>
       </div>

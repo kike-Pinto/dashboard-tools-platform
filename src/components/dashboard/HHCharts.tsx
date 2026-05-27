@@ -130,21 +130,23 @@ export function CostByWorkerChart({ data }: HHChartProps) {
         </PieChart>
       </ResponsiveContainer>
 
-      <div className='flex flex-col justify-center gap-3'>
+      <div className='flex max-h-full flex-col justify-center gap-2 overflow-hidden'>
         {chartData.map((item, index) => (
           <div
             key={item.worker}
-            className='flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-slate-950/50 px-3 py-2'
+            className='flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-slate-950/50 px-3 py-1.5'
           >
             <div className='flex items-center gap-2'>
               <span
                 className='h-3 w-3 rounded-full'
                 style={{ backgroundColor: COLORS[index % COLORS.length] }}
               />
-              <span className='text-sm text-slate-300'>{item.worker}</span>
+              <span className='truncate text-xs text-slate-300'>
+                {item.worker}
+              </span>
             </div>
 
-            <span className='text-sm font-semibold text-white'>
+            <span className='text-xs font-semibold text-white'>
               ${item.cost.toLocaleString('en-US')}
             </span>
           </div>
