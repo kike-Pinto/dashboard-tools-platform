@@ -30,31 +30,72 @@ export function HHDashboardClient() {
   return (
     <>
       <section className='mt-8 rounded-3xl border border-white/10 bg-white/4 p-6'>
-        <div className='flex flex-col gap-4 md:flex-row md:items-center md:justify-between'>
+        <div className='grid gap-6 lg:grid-cols-[1.4fr_0.6fr]'>
           <div>
             <h2 className='text-xl font-semibold'>Upload HH data</h2>
             <p className='mt-2 text-sm text-slate-400'>
-              Required columns: worker, activity, hours, cost
+              Upload a CSV file with workforce hours and labor cost data.
             </p>
-            <p className='mt-2 text-xs text-slate-500'>
+
+            <div className='mt-5 grid gap-3 sm:grid-cols-4'>
+              <div className='rounded-2xl border border-white/10 bg-slate-950/50 p-4'>
+                <p className='text-xs uppercase tracking-wide text-slate-500'>
+                  Column
+                </p>
+                <p className='mt-1 font-semibold text-white'>worker</p>
+              </div>
+
+              <div className='rounded-2xl border border-white/10 bg-slate-950/50 p-4'>
+                <p className='text-xs uppercase tracking-wide text-slate-500'>
+                  Column
+                </p>
+                <p className='mt-1 font-semibold text-white'>activity</p>
+              </div>
+
+              <div className='rounded-2xl border border-white/10 bg-slate-950/50 p-4'>
+                <p className='text-xs uppercase tracking-wide text-slate-500'>
+                  Column
+                </p>
+                <p className='mt-1 font-semibold text-white'>hours</p>
+              </div>
+
+              <div className='rounded-2xl border border-white/10 bg-slate-950/50 p-4'>
+                <p className='text-xs uppercase tracking-wide text-slate-500'>
+                  Column
+                </p>
+                <p className='mt-1 font-semibold text-white'>cost</p>
+              </div>
+            </div>
+
+            <p className='mt-4 text-xs text-slate-500'>
               Current file: {fileName}
             </p>
           </div>
 
-          <label className='cursor-pointer rounded-xl bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300'>
-            Upload CSV
-            <input
-              type='file'
-              accept='.csv,text/csv'
-              className='hidden'
-              onChange={(event) => {
-                const file = event.target.files?.[0]
-                if (file) {
-                  handleFileUpload(file)
-                }
-              }}
-            />
-          </label>
+          <div className='flex flex-col justify-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 p-5'>
+            <label className='cursor-pointer rounded-xl bg-cyan-400 px-6 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-cyan-300'>
+              Upload CSV
+              <input
+                type='file'
+                accept='.csv,text/csv'
+                className='hidden'
+                onChange={(event) => {
+                  const file = event.target.files?.[0]
+                  if (file) {
+                    handleFileUpload(file)
+                  }
+                }}
+              />
+            </label>
+
+            <a
+              href='/samples/hh-dashboard-sample.csv'
+              download
+              className='rounded-xl border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10'
+            >
+              Download sample CSV
+            </a>
+          </div>
         </div>
       </section>
 
