@@ -8,6 +8,7 @@ import { parseHHCsv } from '@/lib/dashboard/parseHHCsv'
 import { ChartCard } from './ChartCard'
 import { KPICard } from './KPICard'
 import { CostByWorkerChart, HoursByActivityChart } from './HHCharts'
+import { parseHHExcel } from '@/lib/dashboard/parseHHExcel'
 
 export function HHDashboardClient() {
   const [data, setData] = useState<HHRow[]>(hhMockData)
@@ -16,7 +17,12 @@ export function HHDashboardClient() {
   const kpi = calculateHHKPIs(data)
 
   async function handleFileUpload(file: File) {
-    const parsedData = await parseHHCsv(file)
+    const extension = file.name.split('.').pop()?.toLowerCase()
+
+    const parsedData =
+      extension === 'xlsx' || extension === 'xls'
+        ? await parseHHExcel(file)
+        : await parseHHCsv(file)
 
     if (parsedData.length === 0) {
       alert('No valid rows found. Use columns: worker, activity, hours, cost')
@@ -34,7 +40,8 @@ export function HHDashboardClient() {
           <div>
             <h2 className='text-xl font-semibold'>Upload HH data</h2>
             <p className='mt-2 text-sm text-slate-400'>
-              Upload a CSV file with workforce hours and labor cost data.
+              Upload a CSV or Excel file with workforce hours and labor cost
+              data.
             </p>
 
             <div className='mt-5 grid gap-3 sm:grid-cols-4'>
@@ -74,10 +81,10 @@ export function HHDashboardClient() {
 
           <div className='flex flex-col justify-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 p-5'>
             <label className='cursor-pointer rounded-xl bg-cyan-400 px-6 py-3 text-center text-sm font-semibold text-slate-950 transition hover:bg-cyan-300'>
-              Upload CSV
+              Upload CSV / Excel
               <input
                 type='file'
-                accept='.csv,text/csv'
+                accept='.csv,.xlsx,.xls,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel'
                 className='hidden'
                 onChange={(event) => {
                   const file = event.target.files?.[0]
