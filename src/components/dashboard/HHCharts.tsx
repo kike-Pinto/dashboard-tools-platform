@@ -71,32 +71,55 @@ export function CostByWorkerChart({ data }: HHChartProps) {
   const chartData = groupCostByWorker(data)
 
   return (
-    <ResponsiveContainer width='100%' height='100%'>
-      <PieChart>
-        <Pie
-          data={chartData}
-          dataKey='cost'
-          nameKey='worker'
-          cx='50%'
-          cy='50%'
-          outerRadius={90}
-          innerRadius={55}
-          paddingAngle={4}
-        >
-          {chartData.map((entry, index) => (
-            <Cell key={entry.worker} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
+    <div className='grid h-full gap-4 md:grid-cols-[1fr_0.8fr]'>
+      <ResponsiveContainer width='100%' height='100%'>
+        <PieChart>
+          <Pie
+            data={chartData}
+            dataKey='cost'
+            nameKey='worker'
+            cx='50%'
+            cy='50%'
+            outerRadius={90}
+            innerRadius={55}
+            paddingAngle={4}
+          >
+            {chartData.map((entry, index) => (
+              <Cell key={entry.worker} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
 
-        <Tooltip
-          contentStyle={{
-            backgroundColor: '#020617',
-            border: '1px solid rgba(255,255,255,0.12)',
-            borderRadius: '12px',
-            color: '#fff',
-          }}
-        />
-      </PieChart>
-    </ResponsiveContainer>
+          <Tooltip
+            contentStyle={{
+              backgroundColor: '#020617',
+              border: '1px solid rgba(255,255,255,0.12)',
+              borderRadius: '12px',
+              color: '#fff',
+            }}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+
+      <div className='flex flex-col justify-center gap-3'>
+        {chartData.map((item, index) => (
+          <div
+            key={item.worker}
+            className='flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-slate-950/50 px-3 py-2'
+          >
+            <div className='flex items-center gap-2'>
+              <span
+                className='h-3 w-3 rounded-full'
+                style={{ backgroundColor: COLORS[index % COLORS.length] }}
+              />
+              <span className='text-sm text-slate-300'>{item.worker}</span>
+            </div>
+
+            <span className='text-sm font-semibold text-white'>
+              ${item.cost.toLocaleString('en-US')}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
