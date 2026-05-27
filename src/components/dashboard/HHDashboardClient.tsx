@@ -9,6 +9,11 @@ import { ChartCard } from './ChartCard'
 import { KPICard } from './KPICard'
 import { CostByWorkerChart, HoursByActivityChart } from './HHCharts'
 import { parseHHExcel } from '@/lib/dashboard/parseHHExcel'
+import {
+  formatCurrency,
+  formatNumber,
+  formatPercent,
+} from '@/lib/dashboard/format'
 
 export function HHDashboardClient() {
   const [data, setData] = useState<HHRow[]>(hhMockData)
@@ -109,22 +114,22 @@ export function HHDashboardClient() {
       <section className='mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4'>
         <KPICard
           label='Total HH'
-          value={String(kpi.totalHH)}
+          value={formatNumber(kpi.totalHH)}
           helper='Total reported hours'
         />
         <KPICard
           label='Total Cost'
-          value={`$${kpi.totalCost}`}
+          value={formatCurrency(kpi.totalCost)}
           helper='Estimated labor cost'
         />
         <KPICard
           label='Productivity'
-          value={`${kpi.productivity}%`}
+          value={formatPercent(kpi.productivity)}
           helper='Based on completed work'
         />
         <KPICard
           label='Avg HH / Worker'
-          value={kpi.avgHH.toFixed(1)}
+          value={formatNumber(Number(kpi.avgHH.toFixed(1)))}
           helper='Average per worker'
         />
       </section>
@@ -165,7 +170,7 @@ export function HHDashboardClient() {
                   <td className='px-4 py-3'>{row.worker}</td>
                   <td className='px-4 py-3'>{row.activity}</td>
                   <td className='px-4 py-3'>{row.hours}</td>
-                  <td className='px-4 py-3'>${row.cost}</td>
+                  <td className='px-4 py-3'>{formatCurrency(row.cost)}</td>
                 </tr>
               ))}
             </tbody>
