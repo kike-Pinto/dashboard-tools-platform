@@ -17,6 +17,7 @@ import {
   formatPercent,
 } from '@/lib/dashboard/format'
 import { UploadZone } from './UploadZone'
+import { DashboardExportActions } from './DashboardExportActions'
 
 type HHDashboardClientProps = {
   requiredColumns: string[]
@@ -177,23 +178,11 @@ export function HHDashboardClient({
               </p>
             </div>
 
-            {!isExporting && (
-              <div className='flex flex-col gap-3 sm:flex-row'>
-                <button
-                  onClick={handleExportPNG}
-                  className='rounded-xl border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 cursor-pointer'
-                >
-                  Export PNG
-                </button>
-
-                <button
-                  onClick={handleExportPDF}
-                  className='rounded-xl bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 cursor-pointer'
-                >
-                  Export PDF
-                </button>
-              </div>
-            )}
+            <DashboardExportActions
+              isExporting={isExporting}
+              onExportPNG={handleExportPNG}
+              onExportPDF={handleExportPDF}
+            />
           </div>
 
           <div className='mt-6 overflow-hidden rounded-2xl border border-white/10'>
