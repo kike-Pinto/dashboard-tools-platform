@@ -49,9 +49,16 @@ export function HoursByActivityChart({ data }: HHChartProps) {
 
   return (
     <ResponsiveContainer width='100%' height='100%'>
-      <BarChart data={chartData}>
+      <BarChart data={chartData} margin={{ bottom: 10 }}>
         <CartesianGrid strokeDasharray='3 3' stroke='#1e293b' />
-        <XAxis dataKey='activity' stroke='#94a3b8' fontSize={12} />
+        <XAxis
+          dataKey='activity'
+          stroke='#94a3b8'
+          fontSize={11}
+          angle={-15}
+          textAnchor='end'
+          height={55}
+        />
         <YAxis stroke='#94a3b8' fontSize={12} />
         <Tooltip
           contentStyle={{
