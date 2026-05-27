@@ -86,14 +86,14 @@ export function HHDashboardClient() {
           title='Hours by activity'
           description='Compare total man-hours across activities.'
         >
-          <HoursByActivityChart />
+          <HoursByActivityChart data={data} />
         </ChartCard>
 
         <ChartCard
           title='Cost by worker'
           description='Identify labor cost distribution by worker.'
         >
-          <CostByWorkerChart />
+          <CostByWorkerChart data={data} />
         </ChartCard>
       </section>
 
