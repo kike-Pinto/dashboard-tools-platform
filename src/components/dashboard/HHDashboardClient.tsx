@@ -18,6 +18,7 @@ import {
 } from '@/lib/dashboard/format'
 import { UploadZone } from './UploadZone'
 import { DashboardExportActions } from './DashboardExportActions'
+import { DataPreviewTable } from './DataPreviewTable'
 
 type HHDashboardClientProps = {
   requiredColumns: string[]
@@ -34,8 +35,6 @@ export function HHDashboardClient({
   const [isExporting, setIsExporting] = useState(false)
 
   const kpi = calculateHHKPIs(data)
-  const visibleRows = data.slice(0, 10)
-  const hasMoreRows = data.length > visibleRows.length
 
   async function handleFileUpload(file: File) {
     const extension = file.name.split('.').pop()?.toLowerCase()
@@ -174,7 +173,8 @@ export function HHDashboardClient({
             <div>
               <h2 className='text-xl font-semibold'>Data preview</h2>
               <p className='mt-2 text-sm text-slate-400'>
-                Showing {visibleRows.length} of {data.length} rows.
+                Showing {data.length > 10 ? 10 : data.length} of {data.length}{' '}
+                rows.
               </p>
             </div>
 
@@ -185,35 +185,7 @@ export function HHDashboardClient({
             />
           </div>
 
-          <div className='mt-6 overflow-hidden rounded-2xl border border-white/10'>
-            <table className='w-full text-left text-sm'>
-              <thead className='bg-slate-900 text-slate-300'>
-                <tr>
-                  <th className='px-4 py-3'>Worker</th>
-                  <th className='px-4 py-3'>Activity</th>
-                  <th className='px-4 py-3'>Hours</th>
-                  <th className='px-4 py-3'>Cost</th>
-                </tr>
-              </thead>
-
-              <tbody className='divide-y divide-white/10 bg-slate-950/40 text-slate-400'>
-                {visibleRows.map((row) => (
-                  <tr key={`${row.worker}-${row.activity}-${row.hours}`}>
-                    <td className='px-4 py-3'>{row.worker}</td>
-                    <td className='px-4 py-3'>{row.activity}</td>
-                    <td className='px-4 py-3'>{row.hours}</td>
-                    <td className='px-4 py-3'>{formatCurrency(row.cost)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            {hasMoreRows && (
-              <div className='border-t border-white/10 bg-slate-950/60 px-4 py-3 text-sm text-slate-400'>
-                Only the first 10 rows are shown to keep the dashboard export
-                clean.
-              </div>
-            )}
-          </div>
+          <DataPreviewTable data={data} />
         </section>
       </div>
     </>
