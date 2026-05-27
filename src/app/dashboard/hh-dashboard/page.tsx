@@ -7,6 +7,8 @@ export default function HHDashboardPage() {
       badge={hhDashboardConfig.badge}
       title={hhDashboardConfig.title}
       description={hhDashboardConfig.description}
+      requiredColumns={hhDashboardConfig.requiredColumns}
+      sampleFile={hhDashboardConfig.sampleFile}
     />
   )
 }

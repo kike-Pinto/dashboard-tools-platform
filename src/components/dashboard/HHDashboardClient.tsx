@@ -17,7 +17,15 @@ import {
   formatPercent,
 } from '@/lib/dashboard/format'
 
-export function HHDashboardClient() {
+type HHDashboardClientProps = {
+  requiredColumns: string[]
+  sampleFile: string
+}
+
+export function HHDashboardClient({
+  requiredColumns,
+  sampleFile,
+}: HHDashboardClientProps) {
   const [data, setData] = useState<HHRow[]>(hhMockData)
   const [fileName, setFileName] = useState('Sample data')
   const dashboardRef = useRef<HTMLDivElement>(null)
@@ -122,33 +130,17 @@ export function HHDashboardClient() {
             </p>
 
             <div className='mt-5 grid gap-3 sm:grid-cols-4'>
-              <div className='rounded-2xl border border-white/10 bg-slate-950/50 p-4'>
-                <p className='text-xs uppercase tracking-wide text-slate-500'>
-                  Column
-                </p>
-                <p className='mt-1 font-semibold text-white'>worker</p>
-              </div>
-
-              <div className='rounded-2xl border border-white/10 bg-slate-950/50 p-4'>
-                <p className='text-xs uppercase tracking-wide text-slate-500'>
-                  Column
-                </p>
-                <p className='mt-1 font-semibold text-white'>activity</p>
-              </div>
-
-              <div className='rounded-2xl border border-white/10 bg-slate-950/50 p-4'>
-                <p className='text-xs uppercase tracking-wide text-slate-500'>
-                  Column
-                </p>
-                <p className='mt-1 font-semibold text-white'>hours</p>
-              </div>
-
-              <div className='rounded-2xl border border-white/10 bg-slate-950/50 p-4'>
-                <p className='text-xs uppercase tracking-wide text-slate-500'>
-                  Column
-                </p>
-                <p className='mt-1 font-semibold text-white'>cost</p>
-              </div>
+              {requiredColumns.map((column) => (
+                <div
+                  key={column}
+                  className='rounded-2xl border border-white/10 bg-slate-950/50 p-4'
+                >
+                  <p className='text-xs uppercase tracking-wide text-slate-500'>
+                    Column
+                  </p>
+                  <p className='mt-1 font-semibold text-white'>{column}</p>
+                </div>
+              ))}
             </div>
 
             <p className='mt-4 text-xs text-slate-500'>
@@ -173,7 +165,7 @@ export function HHDashboardClient() {
             </label>
 
             <a
-              href='/samples/hh-dashboard-sample.csv'
+              href={sampleFile}
               download
               className='rounded-xl border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10'
             >

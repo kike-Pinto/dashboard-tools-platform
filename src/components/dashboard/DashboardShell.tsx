@@ -5,12 +5,16 @@ type DashboardShellProps = {
   badge: string
   title: string
   description: string
+  requiredColumns: string[]
+  sampleFile: string
 }
 
 export function DashboardShell({
   badge,
   title,
   description,
+  requiredColumns,
+  sampleFile,
 }: DashboardShellProps) {
   return (
     <main className='min-h-screen bg-slate-950 text-white'>
@@ -36,7 +40,10 @@ export function DashboardShell({
           </p>
         </div>
 
-        <HHDashboardClient />
+        <HHDashboardClient
+          requiredColumns={requiredColumns}
+          sampleFile={sampleFile}
+        />
       </section>
     </main>
   )
