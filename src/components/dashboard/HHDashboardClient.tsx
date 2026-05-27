@@ -21,6 +21,7 @@ export function HHDashboardClient() {
   const [data, setData] = useState<HHRow[]>(hhMockData)
   const [fileName, setFileName] = useState('Sample data')
   const dashboardRef = useRef<HTMLDivElement>(null)
+  const [isExporting, setIsExporting] = useState(false)
 
   const kpi = calculateHHKPIs(data)
 
@@ -44,26 +45,40 @@ export function HHDashboardClient() {
   async function handleExportPNG() {
     if (!dashboardRef.current) return
 
+    setIsExporting(true)
+
+    await new Promise((r) => setTimeout(r, 100))
+
     const image = await toPng(dashboardRef.current, {
       cacheBust: true,
       pixelRatio: 2,
       backgroundColor: '#020617',
     })
 
+    setIsExporting(false)
+
     const link = document.createElement('a')
+
     link.href = image
     link.download = 'hh-dashboard.png'
+
     link.click()
   }
 
   async function handleExportPDF() {
     if (!dashboardRef.current) return
 
+    setIsExporting(true)
+
+    await new Promise((r) => setTimeout(r, 100))
+
     const image = await toPng(dashboardRef.current, {
       cacheBust: true,
       pixelRatio: 2,
       backgroundColor: '#020617',
     })
+
+    setIsExporting(false)
 
     const pdf = new jsPDF({
       orientation: 'landscape',
@@ -71,10 +86,15 @@ export function HHDashboardClient() {
       format: 'a4',
     })
 
-    const pageWidth = pdf.internal.pageSize.getWidth()
-    const pageHeight = pdf.internal.pageSize.getHeight()
+    pdf.addImage(
+      image,
+      'PNG',
+      0,
+      0,
+      pdf.internal.pageSize.getWidth(),
+      pdf.internal.pageSize.getHeight(),
+    )
 
-    pdf.addImage(image, 'PNG', 0, 0, pageWidth, pageHeight)
     pdf.save('hh-dashboard.pdf')
   }
 
@@ -200,21 +220,23 @@ export function HHDashboardClient() {
               </p>
             </div>
 
-            <div className='flex flex-col gap-3 sm:flex-row'>
-              <button
-                onClick={handleExportPNG}
-                className='rounded-xl border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10'
-              >
-                Export PNG
-              </button>
+            {!isExporting && (
+              <div className='flex flex-col gap-3 sm:flex-row'>
+                <button
+                  onClick={handleExportPNG}
+                  className='rounded-xl border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 cursor-pointer'
+                >
+                  Export PNG
+                </button>
 
-              <button
-                onClick={handleExportPDF}
-                className='rounded-xl bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300'
-              >
-                Export PDF
-              </button>
-            </div>
+                <button
+                  onClick={handleExportPDF}
+                  className='rounded-xl bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 cursor-pointer'
+                >
+                  Export PDF
+                </button>
+              </div>
+            )}
           </div>
 
           <div className='mt-6 overflow-hidden rounded-2xl border border-white/10'>
