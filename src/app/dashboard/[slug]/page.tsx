@@ -25,6 +25,11 @@ export async function generateMetadata({
   return {
     title: `${dashboard.name} - Dashboard Tools Platform`,
     description: dashboard.description,
+    openGraph: {
+      title: `${dashboard.name} - Dashboard Tools Platform`,
+      description: dashboard.description,
+      type: 'website',
+    },
   }
 }
 

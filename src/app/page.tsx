@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: 'Dashboard Tools Platform - Generate KPI Dashboards from Excel',
   description:
     'Generate clean KPI dashboards from Excel and CSV files. Upload operational data, calculate metrics, visualize KPIs and export professional dashboards.',
+  openGraph: {
+    title: 'Dashboard Tools Platform - Generate KPI Dashboards from Excel',
+    description:
+      'Upload Excel or CSV data, visualize operational KPIs and export clean dashboards in minutes.',
+    type: 'website',
+  },
 }
 
 export default function HomePage() {
