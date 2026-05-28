@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://dashboard-tools-platform.vercel.app'),
   title: 'Dashboard Tools Platform',
   description: 'Generate KPI dashboards from Excel and CSV files.',
+
+  verification: {
+    google: 'rgBAbn7ULYgjI7L7ilydOVae5q7XBGyJGOCt5dOKE8w',
+  },
 }
 
 export default function RootLayout({
