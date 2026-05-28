@@ -3,6 +3,8 @@ type UploadZoneProps = {
   requiredColumns: string[]
   sampleFile: string
   onFileUpload: (file: File) => void
+  uploadTitle: string
+  uploadDescription: string
 }
 
 export function UploadZone({
@@ -10,15 +12,15 @@ export function UploadZone({
   requiredColumns,
   sampleFile,
   onFileUpload,
+  uploadTitle,
+  uploadDescription,
 }: UploadZoneProps) {
   return (
     <section className='mt-8 rounded-3xl border border-white/10 bg-white/4 p-6'>
       <div className='grid gap-6 lg:grid-cols-[1.4fr_0.6fr]'>
         <div>
-          <h2 className='text-xl font-semibold'>Upload HH data</h2>
-          <p className='mt-2 text-sm text-slate-400'>
-            Upload a CSV or Excel file with workforce hours and labor cost data.
-          </p>
+          <h2 className='text-xl font-semibold'>{uploadTitle}</h2>
+          <p className='mt-2 text-sm text-slate-400'>{uploadDescription}</p>
 
           <div className='mt-5 grid gap-3 sm:grid-cols-4'>
             {requiredColumns.map((column) => (

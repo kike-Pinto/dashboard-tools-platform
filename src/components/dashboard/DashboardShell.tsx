@@ -7,6 +7,8 @@ type DashboardShellProps = {
   description: string
   requiredColumns: string[]
   sampleFile: string
+  uploadTitle: string
+  uploadDescription: string
 }
 
 export function DashboardShell({
@@ -15,6 +17,8 @@ export function DashboardShell({
   description,
   requiredColumns,
   sampleFile,
+  uploadTitle,
+  uploadDescription,
 }: DashboardShellProps) {
   return (
     <main className='min-h-screen bg-slate-950 text-white'>
@@ -43,6 +47,8 @@ export function DashboardShell({
         <HHDashboardClient
           requiredColumns={requiredColumns}
           sampleFile={sampleFile}
+          uploadTitle={uploadTitle}
+          uploadDescription={uploadDescription}
         />
       </section>
     </main>

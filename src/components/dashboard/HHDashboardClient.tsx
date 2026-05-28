@@ -23,11 +23,15 @@ import { DataPreviewTable } from './DataPreviewTable'
 type HHDashboardClientProps = {
   requiredColumns: string[]
   sampleFile: string
+  uploadTitle: string
+  uploadDescription: string
 }
 
 export function HHDashboardClient({
   requiredColumns,
   sampleFile,
+  uploadTitle,
+  uploadDescription,
 }: HHDashboardClientProps) {
   const [data, setData] = useState<HHRow[]>(hhMockData)
   const [fileName, setFileName] = useState('Sample data')
@@ -126,6 +130,8 @@ export function HHDashboardClient({
         requiredColumns={requiredColumns}
         sampleFile={sampleFile}
         onFileUpload={handleFileUpload}
+        uploadTitle={uploadTitle}
+        uploadDescription={uploadDescription}
       />
 
       <div ref={dashboardRef}>
