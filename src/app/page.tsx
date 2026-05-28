@@ -70,9 +70,7 @@ export default function HomePage() {
               return (
                 <Link
                   key={dashboard.slug}
-                  href={
-                    isAvailable ? `/dashboard/${dashboard.slug}` : '#dashboards'
-                  }
+                  href={`/dashboard/${dashboard.slug}`}
                   className='group rounded-3xl border border-white/10 bg-white/4 p-6 shadow-xl shadow-slate-950/20 transition hover:-translate-y-1 hover:border-cyan-400/30 hover:bg-white/6'
                 >
                   <div className='flex items-start justify-between gap-4'>
