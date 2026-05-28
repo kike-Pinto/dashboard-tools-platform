@@ -1,6 +1,32 @@
 import { dashboardCatalog } from '@/dashboards/catelog'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+
+type MetadataProps = {
+  params: Promise<{
+    slug: string
+  }>
+}
+
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
+  const { slug } = await params
+
+  const dashboard = dashboardCatalog.find((item) => item.slug === slug)
+
+  if (!dashboard) {
+    return {
+      title: 'Dashboard Not Found',
+    }
+  }
+
+  return {
+    title: `${dashboard.name} - Dashboard Tools Platform`,
+    description: dashboard.description,
+  }
+}
 
 type DashboardComingSoonPageProps = {
   params: Promise<{
