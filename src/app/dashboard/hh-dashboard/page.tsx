@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     description:
       'Upload workforce data and instantly visualize hours, labor cost, productivity and operational KPIs.',
     type: 'website',
+    images: [
+      {
+        url: '/og/dashboard-tools-og.png',
+        width: 1200,
+        height: 630,
+        alt: 'HH Dashboard Generator preview',
+      },
+    ],
   },
 }
 

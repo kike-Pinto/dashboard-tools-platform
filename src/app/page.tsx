@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     description:
       'Upload Excel or CSV data, visualize operational KPIs and export clean dashboards in minutes.',
     type: 'website',
+    images: [
+      {
+        url: '/og/dashboard-tools-og.png',
+        width: 1200,
+        height: 630,
+        alt: 'Dashboard Tools Platform preview',
+      },
+    ],
   },
 }
 
