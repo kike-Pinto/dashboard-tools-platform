@@ -27,4 +27,11 @@ export const dashboardCatalog = [
       'Analyze fuel usage, distance, efficiency and cost trends from fleet data.',
     status: 'Coming soon',
   },
+  {
+    name: 'Workforce Productivity Dashboard',
+    slug: 'workforce-productivity-dashboard',
+    description:
+      'Measure productivity, labor performance, hours distribution and workforce efficiency from operational data.',
+    status: 'Coming soon',
+  },
 ]
