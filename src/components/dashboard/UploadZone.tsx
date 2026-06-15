@@ -22,7 +22,7 @@ export function UploadZone({
           <h2 className='text-xl font-semibold'>{uploadTitle}</h2>
           <p className='mt-2 text-sm text-slate-400'>{uploadDescription}</p>
 
-          <div className='mt-5 grid gap-3 sm:grid-cols-4'>
+          <div className='mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4'>
             {requiredColumns.map((column) => (
               <div
                 key={column}

@@ -44,7 +44,7 @@ export default function HomePage() {
             Dashboard & KPI Tools
           </p>
 
-          <h1 className='max-w-5xl text-4xl font-bold tracking-tight md:text-7xl'>
+          <h1 className='max-w-5xl text-4xl font-bold tracking-tight sm:text-5xl md:text-7xl'>
             Generate clean KPI dashboards from Excel and CSV files.
           </h1>
 

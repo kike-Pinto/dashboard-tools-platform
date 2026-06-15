@@ -189,8 +189,8 @@ export function MaintenanceDashboardClient({
             />
           </div>
 
-          <div className='mt-6 overflow-hidden rounded-2xl border border-white/10'>
-            <table className='w-full text-left text-sm'>
+          <div className='mt-6 overflow-x-auto rounded-2xl border border-white/10'>
+            <table className='min-w-190 w-full text-left text-sm'>
               <thead className='bg-slate-900 text-slate-300'>
                 <tr>
                   <th className='px-4 py-3'>Equipment</th>

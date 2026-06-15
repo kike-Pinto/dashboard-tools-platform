@@ -38,7 +38,7 @@ export function DashboardShell({
             {badge}
           </p>
 
-          <h1 className='max-w-4xl text-4xl font-bold tracking-tight md:text-6xl'>
+          <h1 className='max-w-4xl text-3xl font-bold tracking-tight sm:text-4xl md:text-6xl'>
             {title}
           </h1>
 
