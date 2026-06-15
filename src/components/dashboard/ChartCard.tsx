@@ -14,7 +14,7 @@ export function ChartCard({ title, description, children }: ChartCardProps) {
         <p className='mt-2 text-sm text-slate-400'>{description}</p>
       </div>
 
-      <div className='mt-6 h-72 min-w-0 rounded-2xl border border-white/10 bg-slate-900/70 p-4'>
+      <div className='mt-6 h-80 min-w-0 rounded-2xl border border-white/10 bg-slate-900/70 p-3 sm:h-72 sm:p-4'>
         {children}
       </div>
     </div>

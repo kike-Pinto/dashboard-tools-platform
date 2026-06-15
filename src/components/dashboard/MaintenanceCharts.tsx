@@ -74,16 +74,20 @@ export function DowntimeByEquipmentChart({ data }: MaintenanceChartProps) {
 
   return (
     <ResponsiveContainer width='100%' height='100%'>
-      <BarChart data={chartData} margin={{ bottom: 10 }}>
+      <BarChart
+        data={chartData}
+        margin={{ top: 10, right: 8, left: -20, bottom: 20 }}
+      >
         <CartesianGrid strokeDasharray='3 3' stroke='#1e293b' />
 
         <XAxis
           dataKey='equipment'
           stroke='#94a3b8'
-          fontSize={11}
-          angle={-15}
+          fontSize={10}
+          angle={-20}
           textAnchor='end'
-          height={55}
+          height={65}
+          interval={0}
         />
 
         <YAxis stroke='#94a3b8' fontSize={12} />
@@ -111,39 +115,41 @@ export function CostByFailureTypeChart({ data }: MaintenanceChartProps) {
   const chartData = groupCostByFailureType(data)
 
   return (
-    <div className='grid h-full gap-4 md:grid-cols-[1fr_0.8fr]'>
-      <ResponsiveContainer width='100%' height='100%'>
-        <PieChart>
-          <Pie
-            data={chartData}
-            dataKey='cost'
-            nameKey='failureType'
-            cx='50%'
-            cy='50%'
-            outerRadius={90}
-            innerRadius={55}
-            paddingAngle={4}
-          >
-            {chartData.map((entry, index) => (
-              <Cell
-                key={entry.failureType}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
+    <div className='flex h-full flex-col gap-3 md:grid md:grid-cols-[1fr_0.8fr] md:gap-4'>
+      <div className='h-40 min-h-0 md:h-full'>
+        <ResponsiveContainer width='100%' height='100%'>
+          <PieChart>
+            <Pie
+              data={chartData}
+              dataKey='cost'
+              nameKey='failureType'
+              cx='50%'
+              cy='50%'
+              outerRadius={90}
+              innerRadius={55}
+              paddingAngle={4}
+            >
+              {chartData.map((entry, index) => (
+                <Cell
+                  key={entry.failureType}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
 
-          <Tooltip
-            contentStyle={{
-              backgroundColor: '#020617',
-              border: '1px solid rgba(255,255,255,0.12)',
-              borderRadius: '12px',
-              color: '#fff',
-            }}
-          />
-        </PieChart>
-      </ResponsiveContainer>
+            <Tooltip
+              contentStyle={{
+                backgroundColor: '#020617',
+                border: '1px solid rgba(255,255,255,0.12)',
+                borderRadius: '12px',
+                color: '#fff',
+              }}
+            />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
 
-      <div className='flex max-h-full flex-col justify-center gap-2 overflow-hidden'>
+      <div className='grid grid-cols-2 gap-2 overflow-hidden md:flex md:max-h-full md:flex-col md:justify-center'>
         {chartData.map((item, index) => (
           <div
             key={item.failureType}
