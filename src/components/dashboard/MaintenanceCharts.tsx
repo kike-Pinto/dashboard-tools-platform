@@ -116,7 +116,7 @@ export function CostByFailureTypeChart({ data }: MaintenanceChartProps) {
 
   return (
     <div className='flex h-full flex-col gap-3 md:grid md:grid-cols-[1fr_0.8fr] md:gap-4'>
-      <div className='h-40 min-h-0 md:h-full'>
+      <div className='h-52 min-h-0 md:h-full'>
         <ResponsiveContainer width='100%' height='100%'>
           <PieChart>
             <Pie
@@ -125,8 +125,8 @@ export function CostByFailureTypeChart({ data }: MaintenanceChartProps) {
               nameKey='failureType'
               cx='50%'
               cy='50%'
-              outerRadius={90}
-              innerRadius={55}
+              outerRadius='80%'
+              innerRadius='52%'
               paddingAngle={4}
             >
               {chartData.map((entry, index) => (
