@@ -11,7 +11,7 @@ export const dashboardCatalog = [
     slug: 'maintenance-kpi-dashboard',
     description:
       'Track downtime, MTBF, MTTR and equipment availability from maintenance data.',
-    status: 'Coming soon',
+    status: 'Available',
   },
   {
     name: 'Project KPI Dashboard',

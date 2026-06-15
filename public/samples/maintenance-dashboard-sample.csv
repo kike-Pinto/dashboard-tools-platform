@@ -1,0 +1,8 @@
+equipment,failure_type,downtime_hours,repair_hours,maintenance_cost
+Pump A,Mechanical,6,3,1200
+Conveyor B,Electrical,4,2,850
+Compressor C,Mechanical,8,5,2100
+Pump A,Leak,3,1.5,600
+Generator D,Electrical,5,2.5,1500
+Conveyor B,Belt Issue,7,4,1800
+Compressor C,Overheating,6,3.5,1600
