@@ -18,7 +18,7 @@ export const dashboardCatalog = [
     slug: 'project-kpi-dashboard',
     description:
       'Visualize progress, budget deviation, tasks and project performance KPIs.',
-    status: 'Coming soon',
+    status: 'Available',
   },
   {
     name: 'Fuel Consumption Dashboard',

@@ -1,0 +1,6 @@
+project,task,planned_progress,actual_progress,budget,cost,status
+Plant Expansion,Foundation,100,100,5000,4800,Completed
+Plant Expansion,Steel Structure,75,60,8000,6200,In Progress
+Plant Expansion,Piping,40,35,6000,4100,In Progress
+Plant Expansion,Electrical,30,20,7000,3300,Delayed
+Plant Expansion,Testing,10,0,3000,500,Not Started
