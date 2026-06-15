@@ -19,12 +19,12 @@ type MaintenanceChartProps = {
 }
 
 const COLORS = [
-  '#22d3ee',
-  '#38bdf8',
-  '#818cf8',
-  '#a78bfa',
-  '#f472b6',
-  '#64748b',
+  '#22d3ee', // cyan
+  '#f97316', // orange
+  '#a78bfa', // purple
+  '#22c55e', // green
+  '#f43f5e', // rose
+  '#64748b', // slate
 ]
 
 function groupDowntimeByEquipment(data: MaintenanceRow[]) {
