@@ -15,6 +15,8 @@ import {
   CostByFailureTypeChart,
   DowntimeByEquipmentChart,
 } from './MaintenanceCharts'
+import { parseMaintenanceCsv } from '@/lib/dashboard/parseMaintenanceCsv'
+import { parseMaintenanceExcel } from '@/lib/dashboard/parseMaintenanceExcel'
 
 type MaintenanceDashboardClientProps = {
   requiredColumns: string[]
@@ -29,8 +31,8 @@ export function MaintenanceDashboardClient({
   uploadTitle,
   uploadDescription,
 }: MaintenanceDashboardClientProps) {
-  const [data] = useState<MaintenanceRow[]>(maintenanceMockData)
-  const [fileName] = useState('Sample data')
+  const [data, setData] = useState<MaintenanceRow[]>(maintenanceMockData)
+  const [fileName, setFileName] = useState('Sample data')
   const [isExporting, setIsExporting] = useState(false)
   const dashboardRef = useRef<HTMLDivElement>(null)
 
@@ -97,8 +99,23 @@ export function MaintenanceDashboardClient({
     pdf.save('maintenance-dashboard.pdf')
   }
 
-  function handleFileUpload() {
-    alert('CSV and Excel upload will be connected in the next step.')
+  async function handleFileUpload(file: File) {
+    const extension = file.name.split('.').pop()?.toLowerCase()
+
+    const parsedData =
+      extension === 'xlsx' || extension === 'xls'
+        ? await parseMaintenanceExcel(file)
+        : await parseMaintenanceCsv(file)
+
+    if (parsedData.length === 0) {
+      alert(
+        'No valid rows found. Use columns: equipment, failure_type, downtime_hours, repair_hours, maintenance_cost',
+      )
+      return
+    }
+
+    setData(parsedData)
+    setFileName(file.name)
   }
 
   return (

@@ -47,12 +47,26 @@ function groupCostByFailureType(data: MaintenanceRow[]) {
     return acc
   }, {})
 
-  return Object.entries(grouped)
+  const sorted = Object.entries(grouped)
     .map(([failureType, cost]) => ({
       failureType,
       cost,
     }))
     .sort((a, b) => b.cost - a.cost)
+
+  const topFailureTypes = sorted.slice(0, 5)
+  const otherFailureTypes = sorted.slice(5)
+
+  const othersCost = otherFailureTypes.reduce((acc, item) => acc + item.cost, 0)
+
+  if (othersCost > 0) {
+    topFailureTypes.push({
+      failureType: 'Others',
+      cost: othersCost,
+    })
+  }
+
+  return topFailureTypes
 }
 
 export function DowntimeByEquipmentChart({ data }: MaintenanceChartProps) {
