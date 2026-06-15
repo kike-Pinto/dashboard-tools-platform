@@ -166,7 +166,7 @@ export function MaintenanceDashboardClient({
 
           <ChartCard
             title='Cost by failure type'
-            description='Analyze maintenance cost distribution by failure type.'
+            description='Top 5 failure types by maintenance cost, grouped with Others.'
           >
             <CostByFailureTypeChart data={data} />
           </ChartCard>
@@ -178,7 +178,7 @@ export function MaintenanceDashboardClient({
               <h2 className='text-xl font-semibold'>Data preview</h2>
               <p className='mt-2 text-sm text-slate-400'>
                 Showing {data.length > 10 ? 10 : data.length} of {data.length}{' '}
-                rows.
+                maintenance records.
               </p>
             </div>
 
@@ -217,6 +217,12 @@ export function MaintenanceDashboardClient({
                 ))}
               </tbody>
             </table>
+            {data.length > 10 && (
+              <div className='border-t border-white/10 bg-slate-950/60 px-4 py-3 text-sm text-slate-400'>
+                Only the first 10 rows are shown to keep the dashboard export
+                clean.
+              </div>
+            )}
           </div>
         </section>
       </div>
