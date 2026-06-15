@@ -19,6 +19,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     {
+      url: `${baseUrl}/guides/how-to-calculate-man-hours`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
+    {
+      url: `${baseUrl}/guides/hh-dashboard-template`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
+    {
+      url: `${baseUrl}/guides/workforce-kpi-dashboard`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
+    {
       url: `${baseUrl}/dashboard/maintenance-kpi-dashboard`,
       lastModified: new Date(),
       changeFrequency: 'monthly',

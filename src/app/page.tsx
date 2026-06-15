@@ -67,6 +67,13 @@ export default function HomePage() {
             >
               View dashboards
             </Link>
+
+            <Link
+              href='/guides'
+              className='rounded-xl border border-white/15 px-6 py-3 font-semibold text-white transition hover:bg-white/10'
+            >
+              Browse Guides
+            </Link>
           </div>
         </section>
 
