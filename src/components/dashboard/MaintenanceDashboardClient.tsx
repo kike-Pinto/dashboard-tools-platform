@@ -11,6 +11,10 @@ import { ChartCard } from './ChartCard'
 import { DashboardExportActions } from './DashboardExportActions'
 import { KPICard } from './KPICard'
 import { UploadZone } from './UploadZone'
+import {
+  CostByFailureTypeChart,
+  DowntimeByEquipmentChart,
+} from './MaintenanceCharts'
 
 type MaintenanceDashboardClientProps = {
   requiredColumns: string[]
@@ -140,18 +144,14 @@ export function MaintenanceDashboardClient({
             title='Downtime by equipment'
             description='Compare total downtime hours by equipment.'
           >
-            <div className='flex h-full items-center justify-center text-sm text-slate-500'>
-              Chart coming next
-            </div>
+            <DowntimeByEquipmentChart data={data} />
           </ChartCard>
 
           <ChartCard
             title='Cost by failure type'
             description='Analyze maintenance cost distribution by failure type.'
           >
-            <div className='flex h-full items-center justify-center text-sm text-slate-500'>
-              Chart coming next
-            </div>
+            <CostByFailureTypeChart data={data} />
           </ChartCard>
         </section>
 
