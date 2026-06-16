@@ -15,6 +15,8 @@ import { ChartCard } from './ChartCard'
 import { DashboardExportActions } from './DashboardExportActions'
 import { KPICard } from './KPICard'
 import { UploadZone } from './UploadZone'
+import { parseWorkforceCsv } from '@/lib/dashboard/parseWorkforceCsv'
+import { parseWorkforceExcel } from '@/lib/dashboard/parseWorkforceExcel'
 
 type WorkforceDashboardClientProps = {
   requiredColumns: string[]
@@ -29,8 +31,8 @@ export function WorkforceDashboardClient({
   uploadTitle,
   uploadDescription,
 }: WorkforceDashboardClientProps) {
-  const [data] = useState<WorkforceRow[]>(workforceMockData)
-  const [fileName] = useState('Sample data')
+  const [data, setData] = useState<WorkforceRow[]>(workforceMockData)
+  const [fileName, setFileName] = useState('Sample data')
   const [isExporting, setIsExporting] = useState(false)
   const dashboardRef = useRef<HTMLDivElement>(null)
 
@@ -97,8 +99,23 @@ export function WorkforceDashboardClient({
     pdf.save('workforce-dashboard.pdf')
   }
 
-  function handleFileUpload() {
-    alert('CSV and Excel upload will be connected in the next step.')
+  async function handleFileUpload(file: File) {
+    const extension = file.name.split('.').pop()?.toLowerCase()
+
+    const parsedData =
+      extension === 'xlsx' || extension === 'xls'
+        ? await parseWorkforceExcel(file)
+        : await parseWorkforceCsv(file)
+
+    if (parsedData.length === 0) {
+      alert(
+        'No valid rows found. Use columns: worker, activity, hours, output, labor_cost',
+      )
+      return
+    }
+
+    setData(parsedData)
+    setFileName(file.name)
   }
 
   return (
@@ -173,7 +190,7 @@ export function WorkforceDashboardClient({
           </div>
 
           <div className='mt-6 overflow-x-auto rounded-2xl border border-white/10'>
-              <table className='min-w-180 w-full text-left text-sm'>
+            <table className='min-w-180 w-full text-left text-sm'>
               <thead className='bg-slate-900 text-slate-300'>
                 <tr>
                   <th className='px-4 py-3'>Worker</th>
