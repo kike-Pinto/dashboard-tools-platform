@@ -3,6 +3,7 @@ import { HHDashboardClient } from './HHDashboardClient'
 import { MaintenanceDashboardClient } from './MaintenanceDashboardClient'
 import { ProjectDashboardClient } from './ProjectDashboardClient'
 import { FuelDashboardClient } from './FuelDashboardClient'
+import { WorkforceDashboardClient } from './WorkforceDashboardClient'
 
 type DashboardShellProps = {
   badge: string
@@ -12,7 +13,7 @@ type DashboardShellProps = {
   sampleFile: string
   uploadTitle: string
   uploadDescription: string
-  dashboardType?: 'hh' | 'maintenance' | 'project' | 'fuel'
+  dashboardType?: 'hh' | 'maintenance' | 'project' | 'fuel' | 'workforce'
 }
 
 export function DashboardShell({
@@ -65,6 +66,13 @@ export function DashboardShell({
           />
         ) : dashboardType === 'fuel' ? (
           <FuelDashboardClient
+            requiredColumns={requiredColumns}
+            sampleFile={sampleFile}
+            uploadTitle={uploadTitle}
+            uploadDescription={uploadDescription}
+          />
+        ) : dashboardType === 'workforce' ? (
+          <WorkforceDashboardClient
             requiredColumns={requiredColumns}
             sampleFile={sampleFile}
             uploadTitle={uploadTitle}

@@ -1,0 +1,8 @@
+worker,activity,hours,output,labor_cost
+Carlos,Assembly,8,24,960
+Maria,Inspection,7,18,840
+Juan,Assembly,9,27,1080
+Pedro,Packaging,6,20,720
+Luis,Inspection,8,16,960
+Carlos,Packaging,5,14,600
+Maria,Assembly,6,19,720

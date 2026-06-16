@@ -32,6 +32,6 @@ export const dashboardCatalog = [
     slug: 'workforce-productivity-dashboard',
     description:
       'Measure productivity, labor performance, hours distribution and workforce efficiency from operational data.',
-    status: 'Coming soon',
+    status: 'Available',
   },
 ]
