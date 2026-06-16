@@ -12,6 +12,8 @@ import { ChartCard } from './ChartCard'
 import { DashboardExportActions } from './DashboardExportActions'
 import { KPICard } from './KPICard'
 import { UploadZone } from './UploadZone'
+import { parseFuelCsv } from '@/lib/dashboard/parseFuelCsv'
+import { parseFuelExcel } from '@/lib/dashboard/parseFuelExcel'
 
 type FuelDashboardClientProps = {
   requiredColumns: string[]
@@ -26,8 +28,8 @@ export function FuelDashboardClient({
   uploadTitle,
   uploadDescription,
 }: FuelDashboardClientProps) {
-  const [data] = useState<FuelRow[]>(fuelMockData)
-  const [fileName] = useState('Sample data')
+  const [data, setData] = useState<FuelRow[]>(fuelMockData)
+  const [fileName, setFileName] = useState('Sample data')
   const [isExporting, setIsExporting] = useState(false)
   const dashboardRef = useRef<HTMLDivElement>(null)
 
@@ -94,8 +96,23 @@ export function FuelDashboardClient({
     pdf.save('fuel-dashboard.pdf')
   }
 
-  function handleFileUpload() {
-    alert('CSV and Excel upload will be connected in the next step.')
+  async function handleFileUpload(file: File) {
+    const extension = file.name.split('.').pop()?.toLowerCase()
+
+    const parsedData =
+      extension === 'xlsx' || extension === 'xls'
+        ? await parseFuelExcel(file)
+        : await parseFuelCsv(file)
+
+    if (parsedData.length === 0) {
+      alert(
+        'No valid rows found. Use columns: vehicle, date, fuel_liters, distance_km, fuel_cost',
+      )
+      return
+    }
+
+    setData(parsedData)
+    setFileName(file.name)
   }
 
   return (
