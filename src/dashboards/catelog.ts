@@ -25,7 +25,7 @@ export const dashboardCatalog = [
     slug: 'fuel-consumption-dashboard',
     description:
       'Analyze fuel usage, distance, efficiency and cost trends from fleet data.',
-    status: 'Coming soon',
+    status: 'Available',
   },
   {
     name: 'Workforce Productivity Dashboard',

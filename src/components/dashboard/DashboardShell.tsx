@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { HHDashboardClient } from './HHDashboardClient'
 import { MaintenanceDashboardClient } from './MaintenanceDashboardClient'
 import { ProjectDashboardClient } from './ProjectDashboardClient'
+import { FuelDashboardClient } from './FuelDashboardClient'
 
 type DashboardShellProps = {
   badge: string
@@ -11,7 +12,7 @@ type DashboardShellProps = {
   sampleFile: string
   uploadTitle: string
   uploadDescription: string
-  dashboardType?: 'hh' | 'maintenance' | 'project'
+  dashboardType?: 'hh' | 'maintenance' | 'project' | 'fuel'
 }
 
 export function DashboardShell({
@@ -57,6 +58,13 @@ export function DashboardShell({
           />
         ) : dashboardType === 'project' ? (
           <ProjectDashboardClient
+            requiredColumns={requiredColumns}
+            sampleFile={sampleFile}
+            uploadTitle={uploadTitle}
+            uploadDescription={uploadDescription}
+          />
+        ) : dashboardType === 'fuel' ? (
+          <FuelDashboardClient
             requiredColumns={requiredColumns}
             sampleFile={sampleFile}
             uploadTitle={uploadTitle}
