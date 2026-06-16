@@ -20,6 +20,8 @@ import { ChartCard } from './ChartCard'
 import { DashboardExportActions } from './DashboardExportActions'
 import { KPICard } from './KPICard'
 import { UploadZone } from './UploadZone'
+import { parseProjectCsv } from '@/lib/dashboard/parseProjectCsv'
+import { parseProjectExcel } from '@/lib/dashboard/parseProjectExcel'
 
 type ProjectDashboardClientProps = {
   requiredColumns: string[]
@@ -34,8 +36,9 @@ export function ProjectDashboardClient({
   uploadTitle,
   uploadDescription,
 }: ProjectDashboardClientProps) {
-  const [data] = useState<ProjectRow[]>(projectMockData)
-  const [fileName] = useState('Sample data')
+  const [data, setData] = useState<ProjectRow[]>(projectMockData)
+  const [fileName, setFileName] = useState('Sample data')
+
   const [isExporting, setIsExporting] = useState(false)
   const dashboardRef = useRef<HTMLDivElement>(null)
 
@@ -102,8 +105,23 @@ export function ProjectDashboardClient({
     pdf.save('project-dashboard.pdf')
   }
 
-  function handleFileUpload() {
-    alert('CSV and Excel upload will be connected in the next step.')
+  async function handleFileUpload(file: File) {
+    const extension = file.name.split('.').pop()?.toLowerCase()
+
+    const parsedData =
+      extension === 'xlsx' || extension === 'xls'
+        ? await parseProjectExcel(file)
+        : await parseProjectCsv(file)
+
+    if (parsedData.length === 0) {
+      alert(
+        'No valid rows found. Use columns: project, task, planned_progress, actual_progress, budget, cost, status',
+      )
+      return
+    }
+
+    setData(parsedData)
+    setFileName(file.name)
   }
 
   return (
