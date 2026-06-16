@@ -162,67 +162,65 @@ export function ProjectDashboardClient({
           </ChartCard>
         </section>
 
-        <section className='mt-8 grid gap-6 xl:grid-cols-2'>
+        <section className='mt-8 max-w-3xl'>
           <ChartCard
             title='Tasks by status'
             description='Task distribution by current project status.'
           >
             <TasksByStatusChart data={data} />
           </ChartCard>
+        </section>
 
-          <section className='rounded-3xl border border-white/10 bg-white/4 p-6'>
-            <div className='flex flex-col gap-3 md:flex-row md:items-center md:justify-between'>
-              <div>
-                <h2 className='text-xl font-semibold'>Data preview</h2>
-                <p className='mt-2 text-sm text-slate-400'>
-                  Showing {data.length > 10 ? 10 : data.length} of {data.length}{' '}
-                  project tasks.
-                </p>
-              </div>
-
-              <DashboardExportActions
-                isExporting={isExporting}
-                onExportPNG={handleExportPNG}
-                onExportPDF={handleExportPDF}
-              />
+        <section className='mt-8 rounded-3xl border border-white/10 bg-white/4 p-6'>
+          <div className='flex flex-col gap-3 md:flex-row md:items-center md:justify-between'>
+            <div>
+              <h2 className='text-xl font-semibold'>Data preview</h2>
+              <p className='mt-2 text-sm text-slate-400'>
+                Showing {data.length > 10 ? 10 : data.length} of {data.length}{' '}
+                project tasks.
+              </p>
             </div>
 
-            <div className='mt-6 overflow-x-auto rounded-2xl border border-white/10'>
-              <table className='min-w-205 w-full text-left text-sm'>
-                <thead className='bg-slate-900 text-slate-300'>
-                  <tr>
-                    <th className='px-4 py-3'>Project</th>
-                    <th className='px-4 py-3'>Task</th>
-                    <th className='px-4 py-3'>Planned</th>
-                    <th className='px-4 py-3'>Actual</th>
-                    <th className='px-4 py-3'>Budget</th>
-                    <th className='px-4 py-3'>Cost</th>
-                    <th className='px-4 py-3'>Status</th>
+            <DashboardExportActions
+              isExporting={isExporting}
+              onExportPNG={handleExportPNG}
+              onExportPDF={handleExportPDF}
+            />
+          </div>
+
+          <div className='mt-6 overflow-x-auto rounded-2xl border border-white/10'>
+            <table className='min-w-205 w-full text-left text-sm'>
+              <thead className='bg-slate-900 text-slate-300'>
+                <tr>
+                  <th className='px-4 py-3'>Project</th>
+                  <th className='px-4 py-3'>Task</th>
+                  <th className='px-4 py-3'>Planned</th>
+                  <th className='px-4 py-3'>Actual</th>
+                  <th className='px-4 py-3'>Budget</th>
+                  <th className='px-4 py-3'>Cost</th>
+                  <th className='px-4 py-3'>Status</th>
+                </tr>
+              </thead>
+
+              <tbody className='divide-y divide-white/10 bg-slate-950/40 text-slate-400'>
+                {data.slice(0, 10).map((row) => (
+                  <tr key={`${row.project}-${row.task}`}>
+                    <td className='px-4 py-3'>{row.project}</td>
+                    <td className='px-4 py-3'>{row.task}</td>
+                    <td className='px-4 py-3'>
+                      {formatPercent(row.planned_progress)}
+                    </td>
+                    <td className='px-4 py-3'>
+                      {formatPercent(row.actual_progress)}
+                    </td>
+                    <td className='px-4 py-3'>{formatCurrency(row.budget)}</td>
+                    <td className='px-4 py-3'>{formatCurrency(row.cost)}</td>
+                    <td className='px-4 py-3'>{row.status}</td>
                   </tr>
-                </thead>
-
-                <tbody className='divide-y divide-white/10 bg-slate-950/40 text-slate-400'>
-                  {data.slice(0, 10).map((row) => (
-                    <tr key={`${row.project}-${row.task}`}>
-                      <td className='px-4 py-3'>{row.project}</td>
-                      <td className='px-4 py-3'>{row.task}</td>
-                      <td className='px-4 py-3'>
-                        {formatPercent(row.planned_progress)}
-                      </td>
-                      <td className='px-4 py-3'>
-                        {formatPercent(row.actual_progress)}
-                      </td>
-                      <td className='px-4 py-3'>
-                        {formatCurrency(row.budget)}
-                      </td>
-                      <td className='px-4 py-3'>{formatCurrency(row.cost)}</td>
-                      <td className='px-4 py-3'>{row.status}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
       </div>
     </>

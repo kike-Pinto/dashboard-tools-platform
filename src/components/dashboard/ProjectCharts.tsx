@@ -139,7 +139,7 @@ export function TasksByStatusChart({ data }: ProjectChartProps) {
 
   return (
     <div className='flex h-full flex-col gap-3 md:grid md:grid-cols-[1fr_0.8fr] md:gap-4'>
-      <div className='h-52 min-h-0 md:h-full'>
+      <div className='h-64 min-h-0 md:h-full'>
         <ResponsiveContainer width='100%' height='100%'>
           <PieChart>
             <Pie
@@ -148,8 +148,8 @@ export function TasksByStatusChart({ data }: ProjectChartProps) {
               nameKey='status'
               cx='50%'
               cy='50%'
-              outerRadius='80%'
-              innerRadius='52%'
+              outerRadius='88%'
+              innerRadius='55%'
               paddingAngle={4}
             >
               {chartData.map((entry, index) => (
