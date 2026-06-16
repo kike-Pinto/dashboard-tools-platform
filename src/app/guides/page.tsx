@@ -6,17 +6,39 @@ const guides = [
     href: '/guides/how-to-calculate-man-hours',
     description: 'Learn how to calculate man hours and workforce effort.',
   },
-
   {
     title: 'HH Dashboard Template',
     href: '/guides/hh-dashboard-template',
     description: 'Understand how HH dashboards help visualize labor KPIs.',
   },
-
   {
     title: 'Workforce KPI Dashboard',
     href: '/guides/workforce-kpi-dashboard',
     description: 'Track workforce productivity and labor performance.',
+  },
+  {
+    title: 'How to Use a Maintenance KPI Dashboard',
+    href: '/guides/how-to-use-maintenance-kpi-dashboard',
+    description:
+      'Learn how maintenance dashboards help track downtime, repairs and maintenance costs.',
+  },
+  {
+    title: 'How to Track Project KPIs',
+    href: '/guides/how-to-track-project-kpis',
+    description:
+      'Understand project KPIs such as progress, budget utilization and task completion.',
+  },
+  {
+    title: 'Fuel Consumption Dashboard Guide',
+    href: '/guides/fuel-consumption-dashboard-guide',
+    description:
+      'Learn how to monitor fuel usage, vehicle efficiency and fuel costs.',
+  },
+  {
+    title: 'Workforce Productivity Metrics',
+    href: '/guides/workforce-productivity-metrics',
+    description:
+      'Discover the most important workforce productivity metrics and indicators.',
   },
 ]
 
@@ -42,7 +64,7 @@ export default function GuidesPage() {
             <Link
               key={guide.href}
               href={guide.href}
-                className='rounded-3xl border border-white/10 bg-white/4 p-6 transition hover:border-cyan-400/30'
+              className='rounded-3xl border border-white/10 bg-white/4 p-6 transition hover:border-cyan-400/30'
             >
               <h2 className='text-xl font-semibold'>{guide.title}</h2>
 
