@@ -26,6 +26,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     {
+      url: `${baseUrl}/dashboard/maintenance-kpi-dashboard`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+
+    {
+      url: `${baseUrl}/dashboard/project-kpi-dashboard`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+
+    {
+      url: `${baseUrl}/dashboard/fuel-consumption-dashboard`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+
+    {
+      url: `${baseUrl}/dashboard/workforce-productivity-dashboard`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+
+    {
       url: `${baseUrl}/guides/how-to-calculate-man-hours`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -44,34 +72,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
-    },
-
-    {
-      url: `${baseUrl}/dashboard/maintenance-kpi-dashboard`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-
-    {
-      url: `${baseUrl}/dashboard/project-kpi-dashboard`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-
-    {
-      url: `${baseUrl}/dashboard/fuel-consumption-dashboard`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-
-    {
-      url: `${baseUrl}/dashboard/workforce-productivity-dashboard`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
     },
   ]
 }
