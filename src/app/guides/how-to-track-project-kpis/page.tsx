@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { RelatedGuides } from '@/components/guides/RelatedGuides'
 
 export const metadata: Metadata = {
   title: 'How to Track Project KPIs',
@@ -107,6 +108,18 @@ export default function HowToTrackProjectKPIsPage() {
             Most teams review project KPIs weekly, while large projects may
             require daily monitoring.
           </p>
+          <RelatedGuides
+            guides={[
+              {
+                title: 'How to Use a Maintenance KPI Dashboard',
+                href: '/guides/how-to-use-maintenance-kpi-dashboard',
+              },
+              {
+                title: 'Fuel Consumption Dashboard Guide',
+                href: '/guides/fuel-consumption-dashboard-guide',
+              },
+            ]}
+          />
         </section>
       </article>
     </main>

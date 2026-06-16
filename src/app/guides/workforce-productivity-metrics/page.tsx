@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { RelatedGuides } from '@/components/guides/RelatedGuides'
 
 export const metadata: Metadata = {
   title: 'Workforce Productivity Metrics - Key KPIs to Track',
@@ -121,6 +122,18 @@ export default function WorkforceProductivityMetricsPage() {
             A useful productivity metric should connect labor input, such as
             hours or cost, with a measurable output.
           </p>
+          <RelatedGuides
+            guides={[
+              {
+                title: 'Workforce KPI Dashboard',
+                href: '/guides/workforce-kpi-dashboard',
+              },
+              {
+                title: 'How to Calculate Man Hours',
+                href: '/guides/how-to-calculate-man-hours',
+              },
+            ]}
+          />
         </section>
       </article>
     </main>

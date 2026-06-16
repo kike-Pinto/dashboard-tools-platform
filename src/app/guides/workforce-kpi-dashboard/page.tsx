@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { RelatedGuides } from '@/components/guides/RelatedGuides'
 
 export const metadata: Metadata = {
   title: 'Workforce KPI Dashboard - Track Labor Performance',
@@ -175,6 +176,18 @@ export default function WorkforceKPIDashboardPage() {
           <p>
             Yes. A workforce dashboard can be generated from Excel or CSV data.
           </p>
+          <RelatedGuides
+            guides={[
+              {
+                title: 'Workforce Productivity Metrics',
+                href: '/guides/workforce-productivity-metrics',
+              },
+              {
+                title: 'How to Calculate Man Hours',
+                href: '/guides/how-to-calculate-man-hours',
+              },
+            ]}
+          />
         </section>
       </article>
     </main>

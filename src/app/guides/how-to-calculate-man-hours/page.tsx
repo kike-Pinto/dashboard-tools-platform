@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { RelatedGuides } from '@/components/guides/RelatedGuides'
 
 export const metadata: Metadata = {
   title: 'How to Calculate Man Hours - Formula and Example',
@@ -158,6 +159,18 @@ export default function HowToCalculateManHoursPage() {
             Yes. You can calculate man hours manually in Excel or upload CSV and
             Excel data to generate a dashboard automatically.
           </p>
+          <RelatedGuides
+            guides={[
+              {
+                title: 'HH Dashboard Template',
+                href: '/guides/hh-dashboard-template',
+              },
+              {
+                title: 'Workforce Productivity Metrics',
+                href: '/guides/workforce-productivity-metrics',
+              },
+            ]}
+          />
         </section>
       </article>
     </main>

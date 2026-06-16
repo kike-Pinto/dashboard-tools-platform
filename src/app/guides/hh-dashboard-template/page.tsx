@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { RelatedGuides } from '@/components/guides/RelatedGuides'
 
 export const metadata: Metadata = {
   title: 'HH Dashboard Template for Excel and CSV',
@@ -168,6 +169,18 @@ export default function HHDashboardTemplatePage() {
             Construction, maintenance, mining, logistics, manufacturing and
             operations teams frequently use HH dashboards.
           </p>
+          <RelatedGuides
+            guides={[
+              {
+                title: 'How to Calculate Man Hours',
+                href: '/guides/how-to-calculate-man-hours',
+              },
+              {
+                title: 'Workforce KPI Dashboard',
+                href: '/guides/workforce-kpi-dashboard',
+              },
+            ]}
+          />
         </section>
       </article>
     </main>

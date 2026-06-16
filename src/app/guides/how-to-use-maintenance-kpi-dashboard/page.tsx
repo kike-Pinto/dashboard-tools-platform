@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { RelatedGuides } from '@/components/guides/RelatedGuides'
 
 export const metadata: Metadata = {
   title: 'How to Use a Maintenance KPI Dashboard',
@@ -141,6 +142,18 @@ export default function HowToUseMaintenanceKPIDashboardPage() {
             A simple maintenance dashboard can start with equipment name,
             failure type, downtime hours, repair hours and maintenance cost.
           </p>
+          <RelatedGuides
+            guides={[
+              {
+                title: 'How to Track Project KPIs',
+                href: '/guides/how-to-track-project-kpis',
+              },
+              {
+                title: 'Fuel Consumption Dashboard Guide',
+                href: '/guides/fuel-consumption-dashboard-guide',
+              },
+            ]}
+          />
         </section>
       </article>
     </main>

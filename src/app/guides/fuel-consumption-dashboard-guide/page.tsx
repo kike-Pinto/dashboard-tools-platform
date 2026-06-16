@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { RelatedGuides } from '@/components/guides/RelatedGuides'
 
 export const metadata: Metadata = {
   title: 'Fuel Consumption Dashboard Guide',
@@ -107,6 +108,18 @@ export default function FuelConsumptionDashboardGuidePage() {
             L/100km means liters of fuel consumed per 100 kilometers. Lower
             values usually indicate better fuel efficiency.
           </p>
+          <RelatedGuides
+            guides={[
+              {
+                title: 'How to Track Project KPIs',
+                href: '/guides/how-to-track-project-kpis',
+              },
+              {
+                title: 'How to Use a Maintenance KPI Dashboard',
+                href: '/guides/how-to-use-maintenance-kpi-dashboard',
+              },
+            ]}
+          />
         </section>
       </article>
     </main>
