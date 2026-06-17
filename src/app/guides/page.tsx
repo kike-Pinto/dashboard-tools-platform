@@ -46,7 +46,14 @@ export default function GuidesPage() {
   return (
     <main className='min-h-screen bg-slate-950 text-white'>
       <section className='mx-auto max-w-6xl px-6 py-16'>
-        <p className='text-sm font-medium uppercase tracking-[0.25em] text-cyan-300'>
+        <Link
+          href='/'
+          className='text-sm text-cyan-300 transition hover:text-cyan-200'
+        >
+          ← Back to home
+        </Link>
+
+        <p className='mt-10 text-sm font-medium uppercase tracking-[0.25em] text-cyan-300'>
           Guides
         </p>
 

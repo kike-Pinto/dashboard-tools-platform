@@ -118,7 +118,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id='dashboards' className='pb-20'>
+        <section id='dashboards' className='border-t border-white/10 py-20'>
           <div className='mx-auto max-w-3xl text-center'>
             <p className='text-sm font-medium uppercase tracking-[0.25em] text-cyan-300'>
               Dashboard Family
