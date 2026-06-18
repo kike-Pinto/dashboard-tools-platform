@@ -19,6 +19,7 @@ import {
 import { UploadZone } from './UploadZone'
 import { DashboardExportActions } from './DashboardExportActions'
 import { DataPreviewTable } from './DataPreviewTable'
+import { Clock3, DollarSign, TrendingUp, Users } from 'lucide-react'
 
 type HHDashboardClientProps = {
   requiredColumns: string[]
@@ -140,21 +141,33 @@ export function HHDashboardClient({
             label='Total HH'
             value={formatNumber(kpi.totalHH)}
             helper='Total reported hours'
+            icon={<Clock3 className='h-6 w-6' />}
+            iconClassName='border-cyan-400/25 bg-cyan-400/10 text-cyan-300'
+            // trend='+12.4% vs prev. period'
           />
           <KPICard
             label='Total Cost'
             value={formatCurrency(kpi.totalCost)}
             helper='Estimated labor cost'
+            icon={<DollarSign className='h-6 w-6' />}
+            iconClassName='border-sky-400/25 bg-sky-400/10 text-sky-300'
+            // trend='+8.7% vs prev. period'
           />
           <KPICard
             label='Productivity'
             value={formatPercent(kpi.productivity)}
             helper='Based on completed work'
+            icon={<TrendingUp className='h-6 w-6' />}
+            iconClassName='border-violet-400/25 bg-violet-400/10 text-violet-300'
+            // trend='+9.2% vs prev. period'
           />
           <KPICard
             label='Avg HH / Worker'
             value={formatNumber(Number(kpi.avgHH.toFixed(1)))}
             helper='Average per worker'
+            icon={<Users className='h-6 w-6' />}
+            iconClassName='border-orange-400/25 bg-orange-400/10 text-orange-300'
+            // trend='-3.1% vs prev. period'
           />
         </section>
 
