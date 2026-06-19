@@ -11,6 +11,7 @@ import {
   Clock3,
 } from 'lucide-react'
 import Image from 'next/image'
+import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
   title: 'Dashboard Tools Platform - Generate KPI Dashboards from Excel',
@@ -434,6 +435,7 @@ export default function HomePage() {
             </Link>
           </div>
         </section>
+        <Footer />
       </section>
     </main>
   )
