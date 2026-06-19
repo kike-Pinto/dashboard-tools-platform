@@ -14,6 +14,7 @@ import { KPICard } from './KPICard'
 import { UploadZone } from './UploadZone'
 import { parseFuelCsv } from '@/lib/dashboard/parseFuelCsv'
 import { parseFuelExcel } from '@/lib/dashboard/parseFuelExcel'
+import { DollarSign, Fuel, Gauge, Route } from 'lucide-react'
 
 type FuelDashboardClientProps = {
   requiredColumns: string[]
@@ -132,24 +133,32 @@ export function FuelDashboardClient({
             label='Total Fuel'
             value={`${formatNumber(kpi.totalFuel)} L`}
             helper='Total fuel consumed'
+            icon={<Fuel className='h-6 w-6' />}
+            iconClassName='border-cyan-400/25 bg-cyan-400/10 text-cyan-300'
           />
 
           <KPICard
             label='Total Distance'
             value={`${formatNumber(kpi.totalDistance)} km`}
             helper='Total distance traveled'
+            icon={<Route className='h-6 w-6' />}
+            iconClassName='border-sky-400/25 bg-sky-400/10 text-sky-300'
           />
 
           <KPICard
             label='Fuel Cost'
             value={formatCurrency(kpi.totalCost)}
             helper='Total fuel cost'
+            icon={<DollarSign className='h-6 w-6' />}
+            iconClassName='border-emerald-400/25 bg-emerald-400/10 text-emerald-300'
           />
 
           <KPICard
             label='Avg Consumption'
             value={`${kpi.avgConsumption.toFixed(1)} L/100km`}
             helper='Average fuel consumption'
+            icon={<Gauge className='h-6 w-6' />}
+            iconClassName='border-orange-400/25 bg-orange-400/10 text-orange-300'
           />
         </section>
 

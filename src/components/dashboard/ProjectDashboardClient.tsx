@@ -22,6 +22,7 @@ import { KPICard } from './KPICard'
 import { UploadZone } from './UploadZone'
 import { parseProjectCsv } from '@/lib/dashboard/parseProjectCsv'
 import { parseProjectExcel } from '@/lib/dashboard/parseProjectExcel'
+import { BadgeCheck, DollarSign, Target, Wallet } from 'lucide-react'
 
 type ProjectDashboardClientProps = {
   requiredColumns: string[]
@@ -141,18 +142,24 @@ export function ProjectDashboardClient({
             label='Total Budget'
             value={formatCurrency(kpi.totalBudget)}
             helper='Planned project budget'
+            icon={<Wallet className='h-6 w-6' />}
+            iconClassName='border-cyan-400/25 bg-cyan-400/10 text-cyan-300'
           />
 
           <KPICard
             label='Total Cost'
             value={formatCurrency(kpi.totalCost)}
             helper='Actual project cost'
+            icon={<DollarSign className='h-6 w-6' />}
+            iconClassName='border-orange-400/25 bg-orange-400/10 text-orange-300'
           />
 
           <KPICard
             label='Actual Progress'
             value={formatPercent(Math.round(kpi.avgActualProgress))}
             helper='Average actual progress'
+            icon={<Target className='h-6 w-6' />}
+            iconClassName='border-violet-400/25 bg-violet-400/10 text-violet-300'
           />
 
           <KPICard
@@ -161,6 +168,8 @@ export function ProjectDashboardClient({
               kpi.totalTasks,
             )}`}
             helper='Completed project tasks'
+            icon={<BadgeCheck className='h-6 w-6' />}
+            iconClassName='border-emerald-400/25 bg-emerald-400/10 text-emerald-300'
           />
         </section>
 

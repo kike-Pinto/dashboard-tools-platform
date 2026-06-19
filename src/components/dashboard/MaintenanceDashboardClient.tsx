@@ -17,6 +17,7 @@ import {
 } from './MaintenanceCharts'
 import { parseMaintenanceCsv } from '@/lib/dashboard/parseMaintenanceCsv'
 import { parseMaintenanceExcel } from '@/lib/dashboard/parseMaintenanceExcel'
+import { AlertTriangle, Clock3, DollarSign, Wrench } from 'lucide-react'
 
 type MaintenanceDashboardClientProps = {
   requiredColumns: string[]
@@ -135,24 +136,32 @@ export function MaintenanceDashboardClient({
             label='Total Downtime'
             value={formatNumber(kpi.totalDowntime)}
             helper='Total downtime hours'
+            icon={<Clock3 className='h-6 w-6' />}
+            iconClassName='border-red-400/25 bg-red-400/10 text-red-300'
           />
 
           <KPICard
             label='Repair Hours'
             value={formatNumber(kpi.totalRepairHours)}
             helper='Total repair hours'
+            icon={<Wrench className='h-6 w-6' />}
+            iconClassName='border-cyan-400/25 bg-cyan-400/10 text-cyan-300'
           />
 
           <KPICard
             label='Maintenance Cost'
             value={formatCurrency(kpi.totalMaintenanceCost)}
             helper='Total maintenance cost'
+            icon={<DollarSign className='h-6 w-6' />}
+            iconClassName='border-emerald-400/25 bg-emerald-400/10 text-emerald-300'
           />
 
           <KPICard
             label='Total Events'
             value={formatNumber(kpi.totalEvents)}
             helper='Maintenance records'
+            icon={<AlertTriangle className='h-6 w-6' />}
+            iconClassName='border-orange-400/25 bg-orange-400/10 text-orange-300'
           />
         </section>
 

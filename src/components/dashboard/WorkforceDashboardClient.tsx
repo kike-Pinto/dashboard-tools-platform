@@ -17,6 +17,7 @@ import { KPICard } from './KPICard'
 import { UploadZone } from './UploadZone'
 import { parseWorkforceCsv } from '@/lib/dashboard/parseWorkforceCsv'
 import { parseWorkforceExcel } from '@/lib/dashboard/parseWorkforceExcel'
+import { Activity, Boxes, DollarSign, Users } from 'lucide-react'
 
 type WorkforceDashboardClientProps = {
   requiredColumns: string[]
@@ -135,24 +136,32 @@ export function WorkforceDashboardClient({
             label='Total Hours'
             value={formatNumber(kpi.totalHours)}
             helper='Total labor hours'
+            icon={<Activity className='h-6 w-6' />}
+            iconClassName='border-cyan-400/25 bg-cyan-400/10 text-cyan-300'
           />
 
           <KPICard
             label='Total Output'
             value={formatNumber(kpi.totalOutput)}
             helper='Total completed output'
+            icon={<Boxes className='h-6 w-6' />}
+            iconClassName='border-violet-400/25 bg-violet-400/10 text-violet-300'
           />
 
           <KPICard
             label='Labor Cost'
             value={formatCurrency(kpi.totalLaborCost)}
             helper='Total labor cost'
+            icon={<DollarSign className='h-6 w-6' />}
+            iconClassName='border-emerald-400/25 bg-emerald-400/10 text-emerald-300'
           />
 
           <KPICard
             label='Productivity'
             value={`${kpi.productivity.toFixed(2)} / hour`}
             helper='Output per labor hour'
+            icon={<Users className='h-6 w-6' />}
+            iconClassName='border-orange-400/25 bg-orange-400/10 text-orange-300'
           />
         </section>
 
