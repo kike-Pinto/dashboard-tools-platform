@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { RelatedGuides } from '@/components/guides/RelatedGuides'
+import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
   title: 'Workforce KPI Dashboard - Track Labor Performance',
@@ -18,22 +19,18 @@ export default function WorkforceKPIDashboardPage() {
         >
           ← Back to guides
         </Link>
-
         <p className='mt-10 text-sm font-medium uppercase tracking-[0.25em] text-cyan-300'>
           Guide
         </p>
-
         <h1 className='mt-4 text-4xl font-bold tracking-tight md:text-6xl'>
           Workforce KPI Dashboard
         </h1>
-
         <p className='mt-6 text-lg leading-8 text-slate-300'>
           A workforce KPI dashboard helps teams understand labor performance,
           total hours, output, labor cost and productivity trends from
           operational data.
         </p>
-
-        <section className='mt-10 space-y-5 text-slate-300'>
+        <section className='py-20 space-y-5 text-slate-300'>
           <h2 className='text-2xl font-semibold text-white'>
             What does a workforce KPI dashboard show?
           </h2>
@@ -189,6 +186,7 @@ export default function WorkforceKPIDashboardPage() {
             ]}
           />
         </section>
+        <Footer />
       </article>
     </main>
   )

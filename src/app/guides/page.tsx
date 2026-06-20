@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Footer } from '@/components/layout/Footer'
 
 const guides = [
   {
@@ -66,7 +67,7 @@ export default function GuidesPage() {
           dashboard indicators.
         </p>
 
-        <div className='mt-12 grid gap-6 md:grid-cols-2'>
+        <div className='py-20 grid gap-6 md:grid-cols-2'>
           {guides.map((guide) => (
             <Link
               key={guide.href}
@@ -83,6 +84,7 @@ export default function GuidesPage() {
             </Link>
           ))}
         </div>
+        <Footer />
       </section>
     </main>
   )

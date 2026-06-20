@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { RelatedGuides } from '@/components/guides/RelatedGuides'
+import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
   title: 'How to Use a Maintenance KPI Dashboard',
@@ -33,7 +34,7 @@ export default function HowToUseMaintenanceKPIDashboardPage() {
           indicators instead of long spreadsheets.
         </p>
 
-        <section className='mt-10 space-y-5 text-slate-300'>
+        <section className='py-20 space-y-5 text-slate-300'>
           <h2 className='text-2xl font-semibold text-white'>
             What is a maintenance KPI dashboard?
           </h2>
@@ -155,6 +156,7 @@ export default function HowToUseMaintenanceKPIDashboardPage() {
             ]}
           />
         </section>
+        <Footer />
       </article>
     </main>
   )

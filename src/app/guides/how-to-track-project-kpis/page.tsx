@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { RelatedGuides } from '@/components/guides/RelatedGuides'
+import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
   title: 'How to Track Project KPIs',
@@ -32,7 +33,7 @@ export default function HowToTrackProjectKPIsPage() {
           completion so projects stay on schedule and under control.
         </p>
 
-        <section className='mt-10 space-y-5 text-slate-300'>
+        <section className='py-20 space-y-5 text-slate-300'>
           <h2 className='text-2xl font-semibold text-white'>
             What are project KPIs?
           </h2>
@@ -121,6 +122,7 @@ export default function HowToTrackProjectKPIsPage() {
             ]}
           />
         </section>
+        <Footer />
       </article>
     </main>
   )

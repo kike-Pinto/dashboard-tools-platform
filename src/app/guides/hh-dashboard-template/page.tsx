@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { RelatedGuides } from '@/components/guides/RelatedGuides'
+import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
   title: 'HH Dashboard Template for Excel and CSV',
@@ -33,7 +34,7 @@ export default function HHDashboardTemplatePage() {
           productivity KPIs without manually creating charts in Excel.
         </p>
 
-        <section className='mt-10 space-y-5 text-slate-300'>
+        <section className='py-20 space-y-5 text-slate-300'>
           <h2 className='text-2xl font-semibold text-white'>
             What is an HH dashboard?
           </h2>
@@ -182,6 +183,7 @@ export default function HHDashboardTemplatePage() {
             ]}
           />
         </section>
+        <Footer />
       </article>
     </main>
   )

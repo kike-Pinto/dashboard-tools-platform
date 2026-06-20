@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { RelatedGuides } from '@/components/guides/RelatedGuides'
+import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
   title: 'How to Calculate Man Hours - Formula and Example',
@@ -34,7 +35,7 @@ export default function HowToCalculateManHoursPage() {
           workforce planning and project control.
         </p>
 
-        <section className='mt-10 space-y-5 text-slate-300'>
+        <section className='py-20 space-y-5 text-slate-300'>
           <h2 className='text-2xl font-semibold text-white'>
             Man hours formula
           </h2>
@@ -172,6 +173,7 @@ export default function HowToCalculateManHoursPage() {
             ]}
           />
         </section>
+        <Footer />
       </article>
     </main>
   )
