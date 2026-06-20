@@ -14,11 +14,11 @@ import Image from 'next/image'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
-  title: 'Dashboard Tools Platform',
+  title: 'Dashboard Tools Platform | Generate KPI Dashboards',
   description:
     'Generate KPI dashboards from Excel and CSV files. Upload operational data, visualize KPIs and export professional dashboards in minutes.',
   openGraph: {
-    title: 'Dashboard Tools Platform',
+    title: 'Dashboard Tools Platform | Generate KPI Dashboards',
 
     description:
       'Generate KPI dashboards from Excel and CSV files. Upload operational data, visualize KPIs and export professional dashboards.',
