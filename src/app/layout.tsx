@@ -14,8 +14,23 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dashboard-tools-platform.vercel.app'),
-  title: 'Dashboard Tools Platform',
+
+  title: {
+    default: 'Dashboard Tools Platform',
+    template: '%s | Dashboard Tools Platform',
+  },
+
   description: 'Generate KPI dashboards from Excel and CSV files.',
+
+  openGraph: {
+    siteName: 'Dashboard Tools Platform',
+    locale: 'en_US',
+    type: 'website',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+  },
 
   verification: {
     google: 'rgBAbn7ULYgjI7L7ilydOVae5q7XBGyJGOCt5dOKE8w',

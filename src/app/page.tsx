@@ -14,22 +14,36 @@ import Image from 'next/image'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
-  title: 'Dashboard Tools Platform - Generate KPI Dashboards from Excel',
+  title: 'Dashboard Tools Platform',
   description:
-    'Generate KPI dashboards from Excel and CSV files. Upload operational data, calculate metrics, visualize KPIs and export dashboards for operations, maintenance, projects, fuel and workforce productivity.',
+    'Generate KPI dashboards from Excel and CSV files. Upload operational data, visualize KPIs and export professional dashboards in minutes.',
   openGraph: {
-    title: 'Dashboard Tools Platform - Generate KPI Dashboards from Excel',
+    title: 'Dashboard Tools Platform',
+
     description:
-      'Upload Excel or CSV data, visualize operational KPIs and export clean dashboards in minutes.',
+      'Generate KPI dashboards from Excel and CSV files. Upload operational data, visualize KPIs and export professional dashboards.',
+
+    siteName: 'Dashboard Tools Platform',
+
     type: 'website',
+
     images: [
       {
         url: '/og/dashboard-tools-og.png',
         width: 1200,
         height: 630,
-        alt: 'Dashboard Tools Platform preview',
+        alt: 'Dashboard Tools Platform',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+
+    title: 'Dashboard Tools Platform',
+
+    description: 'Generate KPI dashboards from Excel and CSV files.',
+
+    images: ['/og/dashboard-tools-og.png'],
   },
 }
 
