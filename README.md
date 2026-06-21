@@ -1,36 +1,183 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard Tools Platform
 
-## Getting Started
+Professional KPI dashboard generators built with **Next.js**, **TypeScript** and **Recharts**.
 
-First, run the development server:
+Transform Excel and CSV files into interactive dashboards with KPI cards, charts and exportable reports in seconds.
+
+---
+
+## Live Demo
+
+**Website**
+
+https://dashboard-tools-platform.vercel.app
+
+---
+
+## Features
+
+- Upload Excel (.xlsx) and CSV files
+- Automatic KPI calculations
+- Interactive charts
+- Responsive design
+- Export dashboards to PNG
+- Export dashboards to PDF
+- Sample CSV downloads
+- SEO-optimized documentation
+- Mobile-friendly interface
+
+---
+
+# Dashboard Suite
+
+The platform currently includes five operational dashboard generators.
+
+### HH Dashboard Generator
+
+Analyze workforce hours, labor costs and productivity.
+
+- Total HH
+- Labor Cost
+- Productivity
+- Hours by Activity
+- Cost by Worker
+
+---
+
+### Maintenance KPI Dashboard
+
+Visualize maintenance performance.
+
+- Downtime
+- Repair Hours
+- Maintenance Cost
+- Failure Analysis
+- Equipment KPIs
+
+---
+
+### Project KPI Dashboard
+
+Track project execution.
+
+- Planned vs Actual Progress
+- Budget vs Cost
+- Task Status
+- Project KPIs
+
+---
+
+### Fuel Consumption Dashboard
+
+Monitor fleet fuel usage.
+
+- Fuel Consumption
+- Fuel Cost
+- Distance
+- Fuel Efficiency
+
+---
+
+### Workforce Productivity Dashboard
+
+Measure workforce performance.
+
+- Total Output
+- Labor Cost
+- Productivity
+- Hours by Activity
+- Output by Worker
+
+---
+
+# KPI Guides
+
+The platform also includes practical SEO guides covering topics such as:
+
+- Man Hours
+- HH Dashboards
+- Maintenance KPIs
+- Project KPIs
+- Fuel Dashboards
+- Workforce Productivity
+
+---
+
+# Built With
+
+- Next.js 16
+- React
+- TypeScript
+- Tailwind CSS
+- Recharts
+- PapaParse
+- SheetJS (xlsx)
+- html-to-image
+- jsPDF
+
+---
+
+# Screenshots
+
+Add screenshots here.
+
+Example:
+
+- Home
+- HH Dashboard
+- Maintenance Dashboard
+- Project Dashboard
+- Fuel Dashboard
+- Workforce Dashboard
+
+---
+
+# Run Locally
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+src/
+ ├── app/
+ ├── components/
+ ├── dashboards/
+ ├── lib/
+ ├── public/
+ └── styles/
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Roadmap
 
-## Deploy on Vercel
+- More dashboard generators
+- More KPI guides
+- More export formats
+- Dashboard templates
+- Team collaboration features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+MIT
