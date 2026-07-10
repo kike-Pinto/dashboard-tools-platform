@@ -38,10 +38,21 @@ const resourceLinks = [
   },
 ]
 
+const relatedPlatforms = [
+  {
+    title: 'Data Tools Platform',
+    href: 'https://data-tools-platform.vercel.app/',
+  },
+  {
+    title: 'Reporting Tools Platform',
+    href: 'https://reporting-tools-platform.vercel.app/',
+  },
+]
+
 export function Footer() {
   return (
     <footer className='border-t border-white/10 py-12'>
-      <div className='grid gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]'>
+      <div className='grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.9fr]'>
         <div>
           <p className='text-lg font-semibold text-white'>
             Dashboard Tools Platform
@@ -84,10 +95,29 @@ export function Footer() {
             ))}
           </div>
         </div>
+
+        <div>
+          <p className='font-semibold text-white'>Related Platforms</p>
+
+          <div className='mt-4 flex flex-col gap-3'>
+            {relatedPlatforms.map((platform) => (
+              <a
+                key={platform.href}
+                href={platform.href}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-300 transition hover:border-cyan-300/30 hover:bg-white/10 hover:text-cyan-200'
+              >
+                {platform.title}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className='mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between'>
         <p>© 2026 Dashboard Tools Platform.</p>
+
         <p>Built with Next.js, TypeScript and Recharts.</p>
       </div>
     </footer>
